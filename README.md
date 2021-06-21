@@ -4,7 +4,7 @@
 * Strimzi
 * Mysql
 * Debezium
-* Quarkus 
+* Quarkus
 * KStream
 * GraalVM
 
@@ -19,5 +19,4 @@
 
 
 ## Resources
-* https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/
-
+* https://debezium.io/documentation/reference/tutorial.html
