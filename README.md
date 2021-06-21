@@ -1,6 +1,6 @@
 # [Astra Planeti](https://en.wikipedia.org/wiki/Astra_Planeta)
 
-#Tech stack:
+### Tech stack:
 * Strimzi
 * Mysql
 * Debezium
