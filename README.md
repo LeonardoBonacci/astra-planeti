@@ -11,3 +11,13 @@
 
 
 
+
+
+
+
+
+
+
+## Resources
+* https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/
+
