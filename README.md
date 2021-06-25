@@ -5,9 +5,6 @@
 * Mysql
 * Kafka Connect
 * Debezium
-* Quarkus (TODO)
-* KStream (TODO)
-* GraalVM (TODO)
 
 ## Run me!
 
