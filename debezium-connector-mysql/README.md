@@ -1,6 +1,5 @@
 [![License](http://img.shields.io/:license-apache%202.0-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.debezium/debezium-parent/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.debezium%22)
-[![Build Status](https://travis-ci.org/debezium/debezium.svg?branch=master)](https://travis-ci.org/debezium/debezium)
 [![User chat](https://img.shields.io/badge/chat-users-brightgreen.svg)](https://gitter.im/debezium/user)
 [![Developer chat](https://img.shields.io/badge/chat-devs-brightgreen.svg)](https://gitter.im/debezium/dev)
 [![Google Group](https://img.shields.io/:mailing%20list-debezium-brightgreen.svg)](https://groups.google.com/forum/#!forum/debezium)
@@ -9,6 +8,8 @@
 Copyright Debezium Authors.
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 The Antlr grammars within the debezium-ddl-parser module are licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+English | [Chinese](README_ZH.md)
 
 # Debezium
 
@@ -107,15 +108,27 @@ You can skip the integration tests and docker-builds with the following command:
 
     $ mvn clean install -DskipITs
 
-### Running tests of the Postgres connector using the wal2json logical decoding plug-in
+### Running tests of the Postgres connector using the wal2json or pgoutput logical decoding plug-ins
 
-The Postgres connector supports two logical decoding plug-ins for streaming changes from the DB server to the connector: decoderbufs (the default) and wal2json.
+The Postgres connector supports three logical decoding plug-ins for streaming changes from the DB server to the connector: decoderbufs (the default), wal2json, and pgoutput.
 To run the integration tests of the PG connector using wal2json, enable the "wal2json-decoder" build profile:
 
     $ mvn clean install -pl :debezium-connector-postgres -Pwal2json-decoder
+    
+To run the integration tests of the PG connector using pgoutput, enable the "pgoutput-decoder" and "postgres-10" build profiles:
+
+    $ mvn clean install -pl :debezium-connector-postgres -Ppgoutput-decoder,postgres-10
 
 A few tests currently don't pass when using the wal2json plug-in.
 Look for references to the types defined in `io.debezium.connector.postgresql.DecoderDifferences` to find these tests.
+
+### Running tests of the Postgres connector with specific Apicurio Version
+To run the tests of PG connector using wal2json or pgoutput logical decoding plug-ins with a specific version of Apicurio, a test property can be passed as:
+
+    $ mvn clean install -pl debezium-connector-postgres -Pwal2json-decoder 
+          -Ddebezium.test.apicurio.version=1.3.1.Final
+
+In absence of the property the stable version of Apicurio will be fetched.
 
 ### Running tests of the Postgres connector against an external database, e.g. Amazon RDS
 Please note if you want to test against a *non-RDS* cluster, this test requires `<your user>` to be a superuser with not only `replication` but permissions
@@ -130,6 +143,20 @@ Adjust the timeout value as needed.
 
 See [PostgreSQL on Amazon RDS](debezium-connector-postgres/RDS.md) for details on setting up a database on RDS to test against.
 
+### Running tests of the Oracle connector using Oracle XStream
+
+    $ mvn clean install -pl debezium-connector-oracle -Poracle,xstream -Dinstantclient.dir=<path-to-instantclient>
+
+### Running tests of the Oracle connector with a non-CDB database
+
+    $ mvn clean install -pl debezium-connector-oracle -Poracle -Dinstantclient.dir=<path-to-instantclient> -Ddatabase.pdb.name=
+
 ## Contributing
 
 The Debezium community welcomes anyone that wants to help out in any way, whether that includes reporting problems, helping with documentation, or contributing code changes to fix bugs, add tests, or implement new features. See [this document](CONTRIBUTE.md) for details.
+
+A big thank you to all the Debezium contributors!
+
+<a href="https://github.com/debezium/debezium/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=debezium/debezium" />
+</a>
