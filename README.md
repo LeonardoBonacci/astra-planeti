@@ -1,5 +1,7 @@
 # [Astra Planeti](https://en.wikipedia.org/wiki/Astra_Planeta)
 
+### don't forget to check out the more interesting [strimzi](https://github.com/LeonardoBonacci/astra-planeti/tree/strimzi) branch!
+
 ### Tech stack:
 * Strimzi (TODO)
 * Mysql
